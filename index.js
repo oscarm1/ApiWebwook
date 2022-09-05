@@ -52,6 +52,8 @@ app.post("/webhook",(req,res)=>{
                console.log("from "+from);
                console.log("boady param "+msg_body);
 
+               let jsonData = JSON.stringify(body_param,null,2);
+
                axios({
                 method:"POST",
                 url:"https://d4b1-185-5-48-0.eu.ngrok.io/MessagesWP",
