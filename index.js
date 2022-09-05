@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express().use(body_parser.json());
 const token=process.env.TOKEN;
-const mytoken="oscar12312"//process.env.MYTOKEN;//prasath_token
+const mytoken=process.env.MYTOKEN;//prasath_token
 
 app.listen(process.env.PORT,()=>{
   console.log("webhook is listening");
