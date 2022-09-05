@@ -53,20 +53,13 @@ app.post("/webhook",(req,res)=>{
                console.log("boady param "+msg_body);
 
                axios({
-                   method:"POST",
-                   url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
-                   data:{
-                       messaging_product:"whatsapp",
-                       to:from,
-                       text:{
-                           body:"Hi.. I'm Prasath, your message is "+msg_body
-                       }
-                   },
-                   headers:{
-                       "Content-Type":"application/json"
-                   }
-
-               });
+                method:"POST",
+                url:"https://d4b1-185-5-48-0.eu.ngrok.io/MessagesWP",
+                data:jsonData,
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            });
 
                res.sendStatus(200);
             }else{
