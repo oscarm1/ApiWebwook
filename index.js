@@ -8,7 +8,7 @@ const app=express().use(body_parser.json());
 const token=process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;//prasath_token
 
-app.listen(process.env.PORT,()=>{
+app.listen(3000,()=>{
     console.log("webhook is listening");
 });
 
@@ -37,6 +37,8 @@ app.post("/webhook",(req,res)=>{
 
     console.log(JSON.stringify(body_param,null,2));
 
+    let jsonData = JSON.stringify(body_param,null,2);
+
     if(body_param.object){
         console.log("inside body param");
         if(body_param.entry && 
@@ -48,25 +50,37 @@ app.post("/webhook",(req,res)=>{
                let from = body_param.entry[0].changes[0].value.messages[0].from; 
                let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
 
-               console.log("phone number "+phon_no_id);
-               console.log("from "+from);
-               console.log("boady param "+msg_body);
+              //  console.log("phone number "+phon_no_id);
+              //  console.log("from "+from);
+              //  console.log("boady param "+msg_body);
 
-               axios({
+               axios(
+
+                {
                    method:"POST",
-                   url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
-                   data:{
-                       messaging_product:"whatsapp",
-                       to:from,
-                       text:{
-                           body:"Hi.. I'm Prasath, your message is "+msg_body
-                       }
-                   },
+                   url:"https://d4b1-185-5-48-0.eu.ngrok.io/MessagesWP",
+                   data:jsonData,
                    headers:{
                        "Content-Type":"application/json"
                    }
+               }
 
-               });
+              //   {
+              //      method:"POST",
+              //      url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
+              //      data:{
+              //          messaging_product:"whatsapp",
+              //          to:from,
+              //          text:{
+              //              body:"Hi.. I'm Prasath, your message is "+msg_body
+              //          }
+              //      },
+              //      headers:{
+              //          "Content-Type":"application/json"
+              //      }
+              //  }
+               
+               );
 
                res.sendStatus(200);
             }else{
