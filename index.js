@@ -32,6 +32,8 @@ app.post('/webhook', function (req, res) {
 
   let body_param=req.body;
 
+  console.log("llamaron al post");
+
   console.log(JSON.stringify(body_param,null,2));
 
  // alert(JSON.stringify(body_param,null,2));
