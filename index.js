@@ -28,7 +28,8 @@ app.get('/webhook', function (req, res) {
   }
 })
 
-app.post("/webhook", (req, res)=>{
+app.post("/webhook",(req,res)=>{ 
+
   let body_param=req.body;
 
   console.log(JSON.stringify(body_param,null,2));
@@ -70,7 +71,8 @@ app.post("/webhook", (req, res)=>{
           }
 
   }
-})
+
+});
 
 app.get("/",(req,res)=>{
   res.status(200).send("hello this is webhook setup");
