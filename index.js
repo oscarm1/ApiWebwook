@@ -54,16 +54,16 @@ app.post("/webhook",(req,res)=>{
               //  console.log("from "+from);
               //  console.log("boady param "+msg_body);
 
-               axios(
+              //  axios(
 
-                {
-                   method:"POST",
-                   url:"https://d4b1-185-5-48-0.eu.ngrok.io/MessagesWP",
-                   data:jsonData,
-                   headers:{
-                       "Content-Type":"application/json"
-                   }
-               }
+              //   {
+              //      method:"POST",
+              //      url:"https://d4b1-185-5-48-0.eu.ngrok.io/MessagesWP",
+              //      data:jsonData,
+              //      headers:{
+              //          "Content-Type":"application/json"
+              //      }
+              //  }
 
               //   {
               //      method:"POST",
@@ -80,7 +80,7 @@ app.post("/webhook",(req,res)=>{
               //      }
               //  }
                
-               );
+              // );
 
                res.sendStatus(200);
             }else{
