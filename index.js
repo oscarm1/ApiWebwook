@@ -55,7 +55,7 @@ app.post("/webhook",(req,res)=>{
 
                let jsonData = JSON.stringify(body_param,null,2);
 
-               if(process.env.FLAGTOSEND === 1){  
+               if(process.env.FLAGTOSEND === "true"){  
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
