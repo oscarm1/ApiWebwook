@@ -55,7 +55,7 @@ app.post("/webhook",(req,res)=>{
 
                let jsonData = JSON.stringify(body_param,null,2);
 
-               if(process.env.FLAGTOSEND){  
+               if(process.env.FLAGTOSEND === true){  
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
@@ -71,17 +71,17 @@ app.post("/webhook",(req,res)=>{
                     }
                 });
 
-               }else{
-
-               axios({
-                method:"POST",
-                url:"https://29de-185-5-48-0.eu.ngrok.io/MessagesWP",
-                data:jsonData,
-                headers:{
-                    "Content-Type":"application/json"
+               }else
+               {
+                axios({
+                    method:"POST",
+                    url:"https://29de-185-5-48-0.eu.ngrok.io/MessagesWP",
+                    data:jsonData,
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                    });
                 }
-                });
-            }
 
                res.sendStatus(200);
             }else{
