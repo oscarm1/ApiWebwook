@@ -47,12 +47,31 @@ app.post("/webhook",(req,res)=>{
                let phon_no_id=body_param.entry[0].changes[0].value.metadata.phone_number_id;
                let from = body_param.entry[0].changes[0].value.messages[0].from; 
                let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+               let to = process.env.TELTOSEND;
 
                console.log("phone number "+phon_no_id);
                console.log("from "+from);
                console.log("boady param "+msg_body);
 
                let jsonData = JSON.stringify(body_param,null,2);
+
+               if(process.env.FLAGTOSEND){  
+                axios({
+                    method:"POST",
+                    url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
+                    data:{
+                        messaging_product:"whatsapp",
+                        to:to,
+                        text:{
+                            body:"Hi.. your message is "+msg_body
+                        }
+                    },
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                });
+
+               }else{
 
                axios({
                 method:"POST",
@@ -62,6 +81,7 @@ app.post("/webhook",(req,res)=>{
                     "Content-Type":"application/json"
                 }
             });
+        }
 
                res.sendStatus(200);
             }else{
