@@ -56,7 +56,7 @@ app.post("/webhook",(req,res)=>{
 
                axios({
                 method:"POST",
-                url:"https://d4b1-185-5-48-0.eu.ngrok.io/MessagesWP",
+                url:"https://29de-185-5-48-0.eu.ngrok.io/MessagesWP",
                 data:jsonData,
                 headers:{
                     "Content-Type":"application/json"
