@@ -38,7 +38,7 @@ app.post("/webhook",(req,res)=>{
     console.log(JSON.stringify(body_param,null,2));
 
     if(body_param.object){
-        console.log("inside body param");
+        //console.log("inside body param");
         if(body_param.entry && 
             body_param.entry[0].changes && 
             body_param.entry[0].changes[0].value.messages && 
