@@ -79,7 +79,7 @@ app.post("/webhook",(req,res)=>{
                     data:jsonData,
                     headers:{
                         "Content-Type":"application/json"
-                    }
+                    } 
                 });
                 }
 
