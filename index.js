@@ -33,6 +33,8 @@ app.get("/webhook",(req,res)=>{
 
 app.post("/webhook",(req,res)=>{ 
 
+    try {
+        
     let body_param=req.body;
 
     console.log(JSON.stringify(body_param,null,2));
@@ -82,6 +84,8 @@ app.post("/webhook",(req,res)=>{
                         "Content-Type":"application/json"
                     }
                     });
+
+                    console.log("salimos del post");
                 }
 
                res.sendStatus(200);
@@ -91,7 +95,12 @@ app.post("/webhook",(req,res)=>{
 
     }
 
+} catch (error) {
+    console.log(error);
+}
+
 });
+
 
 app.get("/",(req,res)=>{
     res.status(200).send("hello this is webhook setup");
