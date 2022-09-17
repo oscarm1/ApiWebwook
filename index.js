@@ -58,7 +58,7 @@ app.post("/webhook",(req,res)=>{
                if(process.env.FLAGTOSEND === "true"){  
                 axios({
                     method:"POST",
-                    url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
+                    url:"https://44a4-185-5-48-24.eu.ngrok.io/api/PostMessages",
                     data:{
                         messaging_product:"whatsapp",
                         to:to,
