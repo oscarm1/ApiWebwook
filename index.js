@@ -76,13 +76,7 @@ app.post("/webhook",(req,res)=>{
                 axios({
                     method:"POST",
                     url:"https://44a4-185-5-48-24.eu.ngrok.io/api/PostMessages",
-                    data:{
-                        messaging_product:"whatsapp",
-                        to:to,
-                        text:{
-                            body:"Hi.. your message is "+msg_body
-                        }
-                    },
+                    data:jsonData,
                     headers:{
                         "Content-Type":"application/json"
                     }
