@@ -84,7 +84,8 @@ app.post("/webhook",(req,res)=>{
                 // });
                 
                 axios.post('https://4d27-185-5-48-24.eu.ngrok.io/PostMessages', {
-                    data:jsonData
+                    firstName: 'Fred',
+                    lastName: 'Flintstone'
                 }, {
                     headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
