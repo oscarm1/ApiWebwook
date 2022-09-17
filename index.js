@@ -76,7 +76,7 @@ app.post("/webhook",(req,res)=>{
                     console.log("entramos al intento con https://4d27-185-5-48-24.eu.ngrok.io/PostMessages");
                 axios({
                     method:"POST",
-                    url:"https://4d27-185-5-48-24.eu.ngrok.io/PostMessages",
+                    url:"https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP",
                     data:jsonData,
                     headers:{
                         "Content-Type":"application/json"
