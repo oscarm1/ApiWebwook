@@ -73,17 +73,27 @@ app.post("/webhook",(req,res)=>{
 
                }else
                {
-                    console.log("entramos al intento con https://4d27-185-5-48-24.eu.ngrok.io/PostMessages");
-                axios({
-                    method:"POST",
-                    url:"https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP",
-                    data:jsonData,
-                    headers:{
-                        "Content-Type":"application/json"
-                    } 
+                //     console.log("entramos al intento con https://4d27-185-5-48-24.eu.ngrok.io/PostMessages");
+                // axios({
+                //     method:"POST",
+                //     url:"https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP",
+                //     data:jsonData,
+                //     headers:{
+                //         "Content-Type":"application/json"
+                //     } 
+                // });
+
+                axios.post('https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP', {
+                    username: 'api',
+                    password: 'MY_PASSWORD',
+                    grant_type: 'MY_GRANT_TYPE'
+                }, {
+                    headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }}).then(response => {console.log(response)})
+                .catch(error => {
+                    console.log(error.response)
                 });
-
-
 
 
                 }
