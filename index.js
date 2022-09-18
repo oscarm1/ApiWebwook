@@ -53,7 +53,7 @@ app.post("/webhook",(req,res)=>{
                console.log("from "+from);
                console.log("boady param "+msg_body);
 
-               let jsonData = JSON.stringify(body_param,null,2);
+               let data = JSON.stringify(body_param,null,2);
 
                if(process.env.FLAGTOSEND === "true"){  
                 axios({
@@ -83,13 +83,36 @@ app.post("/webhook",(req,res)=>{
                 //     } 
                 // });
 
-                const res = axios.post('https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP', jsonData, {
-                headers: {
-                    // Overwrite Axios's automatically set Content-Type
-                    'Content-Type': 'application/json'
-                }
+                const options = {
+                    hostname: '4d27-185-5-48-24.eu.ngrok.io',
+                    path: '/MessagesWP',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Content-Length': data.length
+                    }
+                };
+                
+                
+                const req = https.request(options, (res) => {
+                    let data = '';
+                
+                    console.log('Status Code:', res.statusCode);
+                
+                    res.on('data', (chunk) => {
+                        data += chunk;
+                    });
+                
+                    res.on('end', () => {
+                        console.log('Body: ', JSON.parse(data));
+                    });
+                
+                }).on("error", (err) => {
+                    console.log("Error: ", err.message);
                 });
-                        console.log(res);
+                
+                req.write(data);
+                req.end();
                 }
 
                res.sendStatus(200);
