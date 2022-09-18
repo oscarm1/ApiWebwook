@@ -83,13 +83,15 @@ app.post("/webhook",(req,res)=>{
                 //     } 
                 // });
 
-                axios.post('https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP', {
+                axios.post('https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP', 
+                {
                     username: 'api',
                     password: 'MY_PASSWORD',
                     grant_type: 'MY_GRANT_TYPE'
-                }, {
+                }
+                , {
                     headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    'Content-Type': 'application/json'
                 }}).then(response => {console.log(response)})
                 .catch(error => {
                     console.log(error.response)
