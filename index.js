@@ -31,7 +31,7 @@ app.get("/webhook",(req,res)=>{
 
 });
 
-app.post("/webhook",async (req,res)=>{ 
+app.post("/webhook",(req,res)=>{ 
 
     let body_param=req.body;
 
@@ -83,13 +83,13 @@ app.post("/webhook",async (req,res)=>{
                 //     } 
                 // });
 
-                const res = await axios.post('https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP', jsonData, {
+                const res = axios.post('https://4d27-185-5-48-24.eu.ngrok.io/MessagesWP', jsonData, {
                 headers: {
                     // Overwrite Axios's automatically set Content-Type
                     'Content-Type': 'application/json'
                 }
                 });
-
+                        console.log(res);
                 }
 
                res.sendStatus(200);
