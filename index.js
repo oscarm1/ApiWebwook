@@ -34,6 +34,8 @@ app.get("/webhook",(req,res)=>{
 
 app.post("/webhook",(req,res)=>{ 
 
+    try{
+
     let body_param=req.body;
 
     console.log(JSON.stringify(body_param,null,2));
@@ -122,6 +124,9 @@ app.post("/webhook",(req,res)=>{
             }
 
     }
+} catch (err){
+    console.log(err);
+}
 
 });
 
