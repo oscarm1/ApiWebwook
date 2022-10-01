@@ -43,8 +43,8 @@ app.post("/webhook",(req,res)=>{
     if(body_param.object){
         //console.log("inside body param");
         if(body_param.entry && 
-            body_param.entry[0].changes && 
-            (body_param.entry[0].changes[0].value.messages || body_param.entry[0].changes[0].value.statuses)
+            body_param.entry[0].changes 
+           // &&  (body_param.entry[0].changes[0].value.messages || body_param.entry[0].changes[0].value.statuses)
           //  body_param.entry[0].changes[0].value.messages[0]  
             ){
                let phon_no_id=body_param.entry[0].changes[0].value.metadata.phone_number_id;
@@ -95,7 +95,7 @@ app.post("/webhook",(req,res)=>{
                         'Content-Length': data.length
                     }
                 };
-                console.log("hola si entro al envio del msj");
+                console.log("hola entro al envio del msj");
                 
                 const req = https.request(options, (res) => {
                     let data = '';
